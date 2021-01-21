@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+    <button id="test">TEST</button>
+    
+    <!-- <script src="./deliverycost.js"></script> -->
+    <script src="https://app.autohub.uk/Scripts/deliverycost.js"></script>
+    <script>
+        $(function(){
+
+            var input = {
+                dealerPostcode: "SW155PU",
+                customerPostcode: "GU15 1AX",
+                costPerMile: 10, // IN POUNDS, so e.g. 10 pounds 75 pence = 10.75, or 62 pence = 0.62
+                freeDistance: 15, // (the discounted miles and initial free radius)
+                minimumCost: 60, // IN POUNDS, as above. Set this to 0 when there is no minimum cost available.
+                blnDeductFreeDistance: true, // should we deduct the freeDistance from charged miles starting outside of the free radius zone
+                maximumDistance: 400 // in miles
+            };
+            
+            document.getElementById("test").addEventListener("click", function() {
+                console.log('click');
+                lookupDistance(input, (res) => console.log(res));
+            });
+        });
+    </script>
+</body>
+</html>
